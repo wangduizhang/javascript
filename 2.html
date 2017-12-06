@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>瞄准坐标</title>
+	<style>
+		#root{
+			height: 500px;
+			width: 600px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="root" onmousemove="fn2(event)">
+		横坐标:0,纵坐标:0
+	</div>
+</body>
+
+    <script type="text/javascript">
+    	/*
+        var el = document.getElementById("root");
+		if (el) {
+            el.addEventListener("mousemove",function(){fn(event)},false);
+		}
+		function fn1(e){
+            el.innerHTML="横坐标:"+e.clientX+",纵坐标:"+e.clientY;
+		}
+		*/
+		function fn2(e){
+            document.getElementById("root").innerHTML="横坐标:"+e.clientX+",纵坐标:"+e.clientY;
+		}	    
+	</script>
+</html>

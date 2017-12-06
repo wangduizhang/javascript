@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+
+</head>
+<body>
+	<button id="but" type="">open</button>
+</body>
+	<script>
+		var el = document.getElementById("but");
+		if (el) {
+			el.addEventListener("click",cha_nge,false)
+		}
+		function cha_nge() {
+		if (el.innerHTML == "open") 
+			el.innerHTML = "close";
+		else
+			el.innerHTML = "open";
+		}
+	</script>
+</html>

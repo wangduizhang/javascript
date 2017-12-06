@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>logo</title>
+    <style>
+    	img{
+    		height: 10%;
+    	}
+    	body{
+    		border: 1px solid red;
+    	}
+    </style>
+</head>
+
+<body>
+
+</body>
+	<script type="text/javascript">
+		var hhh = document.getElementsByTagName("html")[0];
+		var bbb = document.getElementsByTagName("body")[0];
+		if (bbb && hhh){
+			hhh.addEventListener("click",function(){fn(event)},false);
+		}
+		function fn(e){
+			var star = document.createElement("img");
+			star.src = "logo.jpg";
+			star.width = "40";
+			star.style.position = "absolute";
+			var l = e.clientX;
+			var t = e.clientY;
+			star.style.left = l+"px";
+			star.style.top = t+"px";
+			bbb.appendChild(star);
+		}
+	</script>
+
+</html>
