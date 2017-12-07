@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<button onclick="aaa()">appCodeName</button>
+	<button onclick="bbb()">appName</button>
+	<button onclick="ccc()">uaerAgent</button>
+	<button onclick="ddd()">appVersion</button>
+	<p id = "output"></p>
+
+</body>
+</html>
+	<script type="text/javascript">
+		var a = navigator.appCodeName;
+		var a = navigator.ap
+		var b = navigator.appName;
+		var cc = navigator.userAgent;
+		var d = navigator.appVersion;
+		function aaa() {
+			document.getElementById("output").innerHTML = a;
+		}
+		function bbb() {
+			document.getElementById("output").innerHTML = b;
+		}
+		function ccc() {
+			if (cc.indexOf("Firefox")!=-1) {
+				document.getElementById("output").innerHTML = "火狐";
+			}
+
+		}
+		function ddd() {
+			document.getElementById("output").innerHTML = d;
+		}
+	</script>

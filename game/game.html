@@ -1,0 +1,221 @@
+<!--写到现在发现加入新功能太难了，所以以面向对象方法重写，见game2-->
+<!--
+感谢Slim的素材分享：http://www.9miao.com/thread-57531-1-1.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">	 
+	<script src="css/bootstrap-theme.min.css"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#game{
+			cursor:url('images/hammer1.ico'),default;
+			width: 750px;
+			height: 550px;
+			float: left; 
+			background:url(images/bg_canvas.png);
+			margin-left: 600px;
+		}
+		/*分数板背景*/
+		#point_bg{
+			margin: 0;
+			float: left;
+			height: 185px;
+			width: 600px;
+			background: url(images/next.png);
+			background-repeat: no-repeat;
+			background-position: -50px -20px;
+		}
+		/*动物*/
+		.animal{
+			width:;
+			height:;
+		}
+       /*暂停开始样式*/
+       .pl_su{
+       	width: 63px;
+       	height:63px;
+		cursor: pointer;
+       }
+
+		/*menu样式*/
+		#menus{
+          	width: 360px;
+          	height: 210px;
+			padding: 0;
+			float: left;
+		}
+		div[class *= "menu"]{
+			width: 178px;
+			height: 65px;
+			float: left;
+			margin-bottom:2px;
+			cursor: pointer;
+		}
+
+		/*地鼠洞*/
+		div[class*=hole]{
+			width:
+			border: 1px solid red;
+		}
+		#set_sound{			
+			display:; 
+			width: 53px;
+			height: 53px; 
+			background: url(images/icon.png) no-repeat -330px -130px;
+			margin-left: 45px;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+<body>
+	<!--背景音乐-->
+	<audio id = "bgsound" controls="controls" hidden="hidden" autoplay="autoplay" loop="loop">
+		<source src="sound/bgsound.ogg" type="audio/ogg" />
+		<source src="sound/bgsound.mp3" type="audio/mpeg" />
+	</audio>
+	<div id="root">
+		<div id="head" style="float:left; width:1200px;	margin-left: 450px;">
+			<div id="menus">
+				<div class="menu menu1" style = "background:url(images/icon.png) no-repeat -15px -698px;"></div>
+				<div class="menu menu2" style = "background:url(images/icon.png) no-repeat -15px -770px;"></div>
+				<div class="menu menu3" style = "background:url(images/icon.png) no-repeat -15px -552px;"></div>
+				<div class="menu menu4" style = "background:url(images/icon.png) no-repeat -15px -622px;"></div>
+				<div class="menu menu5" style = "background:url(images/icon.png) no-repeat -18px -838px;margin-left:100px;"></div>
+			</div>
+
+			<!--继续暂停-->
+			<div class="pl_su" style="float:left;margin-left:60px;margin-top:60px;background: url(images/icon.png) no-repeat -328px -197px;"></div>
+			<div id="point_bg">
+				<div id="point">
+				</div>
+			</div>
+		</div>
+		<div id="game">
+			<!--说明-->
+			<div id="explain" style="display: none;">
+				<img src="images/help.png">
+			</div>
+			<!--设置面板-->
+			<div id = "root_set" style="display: none;width: 150px ;height:100px;margin-left: -35px;cursor: default;">
+				<p style="font-size: 20px;text-align: center;margin: 0;"><b>音乐</b></p>
+				<div id="set_sound"></div>
+			</div>
+			<!--洞口-->
+			<div class="hole1"></div>
+			<div class="hole2"></div>
+			<div class="hole3"></div>
+			<div class="hole4"></div>
+			<div class="hole5"></div>
+			<div class="hole6"></div>
+			<div class="hole7"></div>
+			<div class="hole8"></div>
+			<div class="hole9"></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+//鼠标事件
+	//锤子指针
+	(function (){
+		var win = document.getElementById("game");
+		win.addEventListener("mousedown",down,false);
+		win.addEventListener("mouseup",up,false);
+		function down() {
+			var win = document.getElementById("game");
+			win.style.cursor = "url('images/hammer2.ico'),default";
+		}
+		function up() {
+			var win = document.getElementById("game");
+			win.style.cursor = "url('images/hammer1.ico'),default";
+		}
+	})();
+	//菜单选项
+	(function () {
+		var menus = document.getElementsByClassName("menu");
+		for (var i = 0; i < menus.length; i++) {
+			menus[i].addEventListener("mousedown",function(){down(this)},false);
+			menus[i].addEventListener("mouseup",function(){up(this)},false);
+		}
+		function down(t) {
+			var ccc= t.getAttribute("class")[9];
+			switch(ccc){
+				//新游戏
+				case "1":
+				    t.style.background = "url(images/icon.png) no-repeat -193px -695px";
+				    break;
+				//重新开始
+				case "2":
+					t.style.background = "url(images/icon.png) no-repeat -192px -767px";
+					break;
+				//设置
+				case "3":
+                    var rootset = document.getElementById("root_set");
+                    var soundset = document.getElementById("set_sound");
+                    var sound = document.getElementById("bgsound");
+                    soundset.addEventListener("mousedown",setsound,false);
+                    if (t.style.background[59] != "9") {
+                    	rootset.style.display = "block";
+					t.style.background = "url(images/icon.png) no-repeat -193px -552px";
+                    }
+                    else{
+                    	rootset.style.display = "none";
+                    	t.style.background = "url(images/icon.png) no-repeat -15px -552px";
+                    }
+                    function setsound() {
+						var n = soundset.style.background[65];
+						if (n==8) {
+                            soundset.style.background = "url(images/icon.png) no-repeat -330px -130px";
+                            sound.play();
+						}
+						else {
+							soundset.style.background ="url(images/icon.png) no-repeat -330px -80px";
+							sound.pause();
+						}
+					};
+					break;
+				//游戏说明
+				case "4":
+ 					var explain = document.getElementById("explain")
+ 					explain.style.cursor = "pointer";
+ 					explain.style.display="block";
+ 					explain.addEventListener("click", function () {document.getElementById("explain").style.display="none";                    	t.style.background = "url(images/icon.png) no-repeat -15px -622px";},false);
+                    if (t.style.background[59] != "9") {
+                    	document.getElementById("explain").style.display = "block";
+						t.style.background = "url(images/icon.png) no-repeat -192px -622px";
+                    }
+                    else{
+                    	document.getElementById("explain").style.display="none";
+                    	t.style.background = "url(images/icon.png) no-repeat -15px -622px";
+                    }
+					break;
+				//退出
+				case "5":
+					t.style.background = "url(images/icon.png) no-repeat -196px -838px";
+					break;
+		}}
+		function up(t) {
+			var ccc= t.getAttribute("class")[9];
+			switch(ccc){
+				case "1":
+				    t.style.background = "url(images/icon.png) no-repeat -15px -698px";
+				    break;
+				case "2":
+					t.style.background = "url(images/icon.png) no-repeat -15px -770px";
+					break;
+				case "5":
+					t.style.background = "url(images/icon.png) no-repeat -18px -838px";
+					break;
+		}}
+	})();
+	//暂停继续游戏按钮
+	(function () {
+		// body...
+	})();
+</script>
