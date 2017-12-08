@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=" zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<title>信息验证</title>
+	</head>
+	<style type="text/css">
+		div{
+			height: 600px;
+			width: 280px;
+			border:1px solid red;
+		}
+		span{
+			float: right;
+			margin: 10px
+		}
+		input{;
+		}
+		select{
+			margin-right: 20px;
+		}
+
+	</style>
+<body>
+	<div id = "root">
+		<form action="" method="post">
+		<span>Email:<input type="email" name="email" value=""></span>
+		<span>用户名: <input type="username" name="username"> </span>
+		<span>密码: <input id = "p1" type="password" name="password1"> </span>
+		<span>再次输入: <input id = "p2" type="password" name="password2"> </span>
+		<span>性别:<input type="radio" name="sex" value="man"> 男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="woman">女&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span><select name="address">
+			<option value="" selected>---选择你的城市---</option>
+			<option value="shanghai">上海</option>
+			<option value="beijing">北京</option>
+			<option value="binzhou">滨州</option>
+			<option value="guanghzhou">广州</option>
+			<option value="tianjin">天津</option>
+		</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<br><br>
+		<span><input type="submit" id = "sub" value="完成注册" style="width: 100px; background:green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</form>	
+	</div>
+</body>
+	<script type="text/javascript" src="../jquery/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			$("input").blur(function(){check1(this,this.value,this.name)});
+			$("input").focus(function(){this.style.background=""});
+			$("#sub").click(function(){check2()});
+			function check1(t,v,n) {
+				switch (n) {
+					case "email":
+						if (!v) {
+							t.style.background="red";
+						}
+						break;
+					case "username":
+						if (!v) {
+							t.style.background="red";
+						}
+						break;
+					case "password1":
+						if (!v||(v
+							!= $("#p2").val())) {
+							t.style.background="red";
+						if (!$("#p2").val()) {
+							t.css("background","")}
+						}
+						else {
+							t.css("background","")
+						}
+						break;
+					case "password2":
+						if (!v||(v
+							!= $("#p1").val())) {
+							t.style.background="red";
+						}
+						else {
+							t.css("background","")
+						}
+						break;
+					case "sub":
+						break;
+				}
+			}
+			function check2() {
+				for (var i = 0; i < 4; i++) {
+					alert($("input").attr("name"))
+					}
+				}
+
+		</script>
+</html>
