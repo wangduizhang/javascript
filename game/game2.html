@@ -1,0 +1,105 @@
+<!--
+感谢Slim的素材分享：http://www.9miao.com/thread-57531-1-1.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>打地鼠</title>
+	<link href="css/view.css" rel="stylesheet">	 
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<!--背景音乐-->
+	<audio id = "bgsound" controls="controls" autoplay="" hidden="hidden" loop="loop">
+		<source src="sound/bgsound.ogg" type="audio/ogg" />
+		<source src="sound/bgsound.mp3" type="audio/mpeg" />
+	</audio>
+
+	<div id="root">
+		<div id = "head">
+			<!--时间条-->
+			<div id="time">
+				<div id="line"></div>
+			</div>
+			<!--总分面板-->
+			<div id = "sumpoint">
+				<div id = "ico"></div>
+				<div id = "nowpoint"></div>
+			</div>
+		</div>
+
+
+		<!--总设置面板-->
+		<div id="site">
+			<!--继续暂停-->
+			<div class="pl_su"></div>
+			<div id="ms">
+				<div class="menu menu1" style = "background:url(images/icon.png) no-repeat -15px -698px;"></div>
+				<div class="menu menu2" style = "background:url(images/icon.png) no-repeat -15px -770px;"></div>
+				<div class="menu menu3" style = "background:url(images/icon.png) no-repeat -15px -552px;"></div>
+				<div class="menu menu4" style = "background:url(images/icon.png) no-repeat -15px -622px;"></div>
+				<div class="menu menu5" style = "background:url(images/icon.png) no-repeat -18px -838px;margin-left:100px;"></div>
+			</div>
+			<!--音乐设置面板-->
+			<div id = "root_set">
+				<b id="text_song">音乐</b>
+					<div id="set_sound" ></div>
+			</div>
+		</div>
+
+
+
+		<!--游戏面板-->
+		<div id="game">
+
+			<!--过关提示板-->
+			<div id="point_bg">
+				<div id="point"></div>
+				<div id="level"></div>
+			</div>
+
+			
+			<!--倒计时-->
+			<div id = counttime>
+				<div class="num1"></div>
+				<div class="num2"></div>
+				<div class="num3"></div>
+				<div class="start"></div>
+			</div>
+
+			<!--洞口-->
+			<div id = holes >
+				<!--正常-->
+				<div class="hole1"></div>
+				<div class="hole2"></div>
+				<div class="hole3"></div>
+				<div class="hole4"></div>
+				<div class="hole5"></div>
+				<div class="hole6"></div>
+				<div class="hole7"></div>
+				<div class="hole8"></div>
+				<div class="hole9"></div>
+				<!--打晕-->
+				<div class="hoe1"></div>
+				<div class="hoe2"></div>
+				<div class="hoe3"></div>
+				<div class="hoe4"></div>
+				<div class="hoe5"></div>
+				<div class="hoe6"></div>
+				<div class="hoe7"></div>
+				<div class="hoe8"></div>
+				<div class="hoe9"></div>
+			</div>
+
+
+			<!--说明-->
+			<div id="explain"></div>
+
+			
+		</div>
+	</div>
+
+</body>
+</html>
+<script src="js/view.js"></script>

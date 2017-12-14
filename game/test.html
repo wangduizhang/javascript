@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	var test={
+		array:[
+		 function(){alert(1)},
+		 function(){alert(2)},
+		],
+		sh:function () {
+			for (var i = 0; i < 2; i++) {
+				test.array[i]();
+			}
+		}
+	}
+	$("html").click(test.sh)
+</script>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,398 @@
+#root
+{
+    float: left;
+    width: 1200px ;
+    height: 800px;
+}
+/*总分*/
+#sumpoint
+{
+    float: right;
+
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+}
+#ico
+{
+    width: 90px;
+    height: 50px;
+    margin-top: 20px;
+
+    background: url('../images/icon.png') no-repeat -10px -150px;
+}
+#head
+{
+    float: right;
+
+    width: 1150px;
+}
+/*时间条*/
+#time
+{
+    float: right;
+
+    width: 380px;
+    height: 80px;
+    margin-top: 10px;
+    margin-right: 150px;
+    padding: 0;
+
+    background: url('../images/time_roller.png') no-repeat 0 0;
+}
+#line
+{
+    width: 320px;
+    height: 80px;
+    margin-left: 45px;
+
+    background: url('../images/time_roller.png') no-repeat -45px -74px;
+}
+/*音乐按钮板背景*/
+#root_set
+{
+    display: none;
+    float: left;
+
+    width: 150px ;
+    height: 100px;
+    margin-left: 120px;
+
+    cursor: pointer;
+}
+/*音乐按钮*/
+#set_sound
+{
+    width: 53px;
+    height: 53px;
+    margin-top: -40px;
+    margin-left: 45px;
+
+    cursor: pointer;
+
+    background: url(../images/icon.png) no-repeat -330px -130px;
+}
+/*过关提示板*/
+#point_bg
+{
+    position: absolute;
+    top: 350px;
+
+    display: none;
+    float: left;
+
+    width: 650px;
+    height: 185px;
+    margin-left: 50px;
+
+    cursor: pointer;
+
+    background: url(../images/next.png) no-repeat 10px -20px;
+}
+/*继续暂停按钮*/
+.pl_su
+{
+    width: 63px;
+    height: 63px;
+    margin-left: 150px;
+
+    cursor: pointer;
+
+    background: url(../images/icon.png) no-repeat -328px -197px;
+}
+/*总设置面板*/
+#site
+{
+    float: left;
+
+    width: 380px;
+    margin-top: 100px;
+}
+/*menu样式*/
+#ms
+{
+    width: 380px;
+    height: 210px;
+    padding: 0;
+}
+div[class *= 'menu']
+{
+    float: left;
+
+    width: 178px;
+    height: 65px;
+    margin-bottom: 2px;
+
+    cursor: pointer;
+}
+
+/*地鼠洞主面板*/
+#holes
+{
+    position: absolute;
+
+    float: left;
+
+    width: 670px;
+    height: 310px;
+    margin-top: 160px;
+    margin-left: 40px;
+}
+/*正常地鼠洞*/
+div[class*=hole]
+{
+    position: absolute;
+
+    float: left;
+
+    width: 120px;
+    height: 110px;
+}
+.hole1
+{
+    top: -5px;
+    left: 90px;
+	
+    display: none;
+    background: url(../images/mouse.png) no-repeat -10px 0px;
+}
+.hole2
+{
+    top: -5px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -15px -115px;
+}
+.hole3
+{
+    top: -5px;
+    left: 470px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -228px;
+}
+.hole4
+{
+    top: 85px;
+    left: 65px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -350px;
+}
+.hole5
+{
+    top: 85px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -470px;
+}
+.hole6
+{
+    top: 85px;
+    left: 470px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -228px;
+}
+.hole7
+{
+    top: 182px;
+    left: 55px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -228px;
+}
+.hole8
+{
+    top: 188px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -228px;
+}
+.hole9
+{
+    top: 190px;
+    left: 500px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -13px -228px;
+}
+/*打晕地鼠洞*/
+div[class*=hoe]
+{
+    position: absolute;
+
+    float: left;
+
+    width: 125px;
+    height: 85px;
+}
+.hoe1
+{
+    top: 20px;
+    left: 90px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -20px;
+}
+.hoe2
+{
+    top: 20px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -125px;
+}
+.hoe3
+{
+    top: 25px;
+    left: 475px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -240px;
+}
+.hoe4
+{
+    top: 115px;
+    left: 65px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -377px;
+}
+.hoe5
+{
+    top: 115px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -500px;
+}
+.hoe6
+{
+    top: 115px;
+    left: 480px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -500px;
+}
+.hoe7
+{
+    top: 215px;
+    left: 62px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -500px;
+}
+.hoe8
+{
+    top: 220px;
+    left: 280px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -500px;
+}
+.hoe9
+{
+    top: 220px;
+    left: 500px;
+
+    display: none;
+
+    background: url(../images/mouse.png) no-repeat -415px -500px;
+}
+/*倒计时*/
+div[class *= 'num']
+{
+    position: absolute;
+    top: 300px;
+    left: 750px;
+
+    width: 50px;
+    height: 90px;
+}
+.start
+{
+    position: absolute;
+    top: 300px;
+    left: 620px;
+
+    display: none;
+
+    width: 300px;
+    height: 90px;
+
+    background: url(../images/icon.png) no-repeat -10px -292px;
+}
+div[class = num1]
+{
+    display: none;
+
+    background: url(../images/icon.png) no-repeat -330px -292px;
+}
+div[class = num2]
+{
+    display: none;
+
+    background: url(../images/icon.png) no-repeat -390px -292px;
+}
+div[class = num3]
+{
+    display: none;
+
+    background: url(../images/icon.png) no-repeat -450px -292px;
+}
+
+#game
+{
+    width: 750px;
+    height: 600px;
+    margin-top: 100px;
+    margin-left: 380px;
+
+    cursor: url('../images/hammer1.ico'),default;
+
+    background: url(../images/bg_canvas.png) no-repeat;
+}
+/*说明板*/
+#explain
+{
+    position: absolute;
+    top: 150px;
+
+    display: none;
+
+    width: 790px;
+    height: 490px;
+
+    cursor: pointer;
+
+    background: url(../images/help.png) no-repeat 0 0;
+}
+/*音乐文字*/
+#text_song
+{
+    font-size: 20px;
+
+    display: block;
+
+    margin-top: 25px;
+}
