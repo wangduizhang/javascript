@@ -8,7 +8,6 @@
 #sumpoint
 {
     float: right;
-
     width: 100px;
     height: 100px;
     margin-right: 50px;
@@ -142,7 +141,7 @@ div[class *= 'menu']
 div[class*=hole]
 {
     position: absolute;
-
+    border: 1px solid blue;
     float: left;
 
     width: 120px;
@@ -368,7 +367,7 @@ div[class = num3]
     margin-top: 100px;
     margin-left: 380px;
 
-    cursor: url('../images/hammer1.ico'),default;
+    cursor: url('../images/new1.ico'),default;
 
     background: url(../images/bg_canvas.png) no-repeat;
 }

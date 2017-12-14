@@ -19,7 +19,7 @@ var countdown = {
 		//播放中
 		if (this.much > 0) {
 			countdown.much++;
-			setTimeout(function() {countdown.i = 0;},30);
+			setTimeout(function() {countdown.i = 0;},60);
 		}
 		//空闲中
 		else{
@@ -49,6 +49,8 @@ var countdown = {
 					//新游戏入口
 					if (game.point == 0) {
 						game.new_game();
+						animals.clear();
+						$(".pl_su").click(game.play_game);
 					}
 					//重新开始当前关卡
 					else{
@@ -95,54 +97,85 @@ var animals = {
 	liyuying_:"-415px -377px",
 	rabbit_:"-415px -500px",
 	all_:["-415px -20px","-415px -125px","-415px -240px","-415px -377px","-415px -500px"],
-/*
-	disp1:function () {
-		$("#line").css("width")=="360px";
-		//随机洞
-		var hole = new Array()
-		for (var i = 0; i < 1000; i++) {
-			hole[i] = parseInt(Math.random()*10+1,10); 
-		}
-		//随机动物
-		var animal = new Array();
-		for (var i = 0; i <1000; i++) {
-			animals[i] = parseInt(Math.random()*100+1,10);
-		}
-		while ($("#line").css("width")=="0px"){
-			//一只动物停留时间
-			var time = hole[i] = parseInt(Math.random()*1000+500,10);
-			for (var i = 0; i < much; i++) {
-				i++;//
-			}
-		}
-	},
-*/
+	status:1,
+
 	disp:function () {
 		$("#line").css("width")=="360px";
 		var much_animal = 0;
 		var hole = parseInt(Math.random()*10+1,10);//1-9洞
 		var animal = parseInt(Math.random()*100,10);//1-100动物
-		var time =  parseInt(Math.random()*300+1500,10);//1500-1800毫秒消失；
+		var time1 = parseInt(Math.random()*1500+1200,10)
+		var time2 =  parseInt(Math.random()*200+1800,10);//1500-1800毫秒消失；
 		var h = ".hole"+hole;
 		var m = 0;//具体动物
-		if ($(h).css("display")=="block") {
+		var p = 0;
+		if ($(h).css("display")=="block" || $(".hoe"+hole).css("display")=="block") {
 			animals.disp();
 			return 0;
-		}
+		};
 		//随机洞
-		if (animal > 98) {m = 0}
-		else if (animal > 95) {m = 4}
-		else if (animal > 85) {m = 2}
-		else if (animal > 25) {m = 1}
-		else{m = 3};
-		$(h).css("background-position",animals.all_normal[m]);
-		$(h).css("display","block");
-		setTimeout(function (){
-			//$(h).css("background-position",animals.all_normal[m]);
-			$(h).css("display","none");
-			animals.disp();
-		},time)
+		if (animal > 98) {m = 0 ;p = game.point}
+		else if (animal > 95) {m = 4 ;p = -(game.point/2)}
+		else if (animal > 90) {m = 2; p = 500}
+		else if (animal > 10) {m = 1; p = 100}
+		else{m = 3; p = -100};
+		if ($("#line").css("width") != "0px"){
+
+			//动物出现
+				if (animals.status) {
+					$(h).css("background-position",animals.all_normal[m]);
+					//击打事件
+					$(h).bind("click",function(){
+						game.point += p;
+						$(h).css("display","none");
+						$(h).unbind();
+						$(".hoe"+hole).css("background-position",animals.all_[m]);
+						$(".hoe"+hole).css("display","block");
+						//隐藏击中的正常块
+						setTimeout(function (){
+							if (animals.status){
+							$(".hoe"+hole).css("display","none");
+							}
+						},500);
+						console.log("当前分数:"+game.point);
+					});
+						setTimeout(function(){
+							if (animals.status) {
+								$(h).css("display","block");
+							}else{return 0};
+						},time1)
+					
+				}else{return 0};
+			//动物消失
+			setTimeout(function (){
+				if (animals.status) {
+				$(h).css("display","none");
+				$(h).unbind();
+				animals.disp();
+				}else{return 0};
+			},time2+time1);
+		}
+		//到时间
+		else{
+			//下一关
+			$(h).unbind();
+			if (game.point >= level.point(game.lev)){
+				
+			}
+			//未通关
+			else{
+				;
+			}
+		}
+	},
+	clear:function(){
+		for (var i = 1; i < 10; i++) {
+			$(".hole"+i).css("display","none");
+			$(".hoe"+i).css("display","none");
+
+		}
 	}
+
 }
 //计时器函数
 var clock = {
@@ -173,7 +206,7 @@ var level = {
 	"time":function(l){
 		switch (l) {
 			case 1:
-				return 10;
+				return 60;
 				break;
 			case 2:
 				return 50;
@@ -220,9 +253,10 @@ function Game() {
 	//开始游戏!!重点!!
 	//出精灵，计分打印总分
 	Game.prototype.new_game = function(){
-		//地鼠洞点击事件
-		$("[class *='hole']")[0].click(function () {
-			alert(1)})
+		animals.status = 1;
+		animals.disp();
+		animals.disp();
+		animals.disp();
 	};
 	Game.prototype.next_level = function(){
 		if (this.point > level.point(this.lev)) {
@@ -238,16 +272,20 @@ function Game() {
 		//暂停
 		if(state == "play"){
 			state = "pause";
+			animals.status = 0;
 			this.state_out = state;
 			$(".pl_su").css("background","url(images/icon.png) no-repeat -390px -197px");
 			clock.stop();
 		}
 		//继续
 		else{
+			animals.status = 1;
 			state = "play";
 			this.state_out = state;
 			$(".pl_su").css("background","url(images/icon.png) no-repeat -328px -197px");
-			clock.run(level.time(game.lev))
+			animals.clear();
+			clock.run(level.time(game.lev));
+			game.new_game();
 		}
 	};
 	Game.prototype.now_state = function(){
@@ -277,13 +315,13 @@ var menu1 = {
 		$("[class *= 'menu2']").mousedown(menu2.down);
 		$("[class *= 'menu2']").mouseup(menu2.up);
 		$("[class *= 'menu1']").css("background","url(images/icon.png) no-repeat -15px -698px");
+		animals.status = 0;
 		game = new Game();
 		//倒计时3秒且新游戏
 		countdown.display();
 		//鼠标事件:点击通关按钮
 		(function () {
 			$("#point_bg").click(function(){$("#point_bg").css("background","none")});
-			$(".pl_su").click(game.play_game);
 		})();
 	}
 };                                                                                                       
@@ -354,10 +392,10 @@ var menu5 = {
 (function () {
 	$("#game").bind({
 	"mousedown":function () {
-		$("#game").css("cursor","url('images/hammer2.ico'),default");
+		$("#game").css("cursor","url('images/new2.ico'),default");
 	},
 	"mouseup": function () {
-		$("#game").css("cursor","url('images/hammer1.ico'),default");
+		$("#game").css("cursor","url('images/new1.ico'),default");
 	}});
 
 
